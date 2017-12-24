@@ -72,7 +72,7 @@ $(document).ready(function(){
 						
 					}
 					if(data.login){
-						location.replace("/WebClass/main.run");
+						location.replace(contextPath+"/main.run");
 					}
 				}
 			});	

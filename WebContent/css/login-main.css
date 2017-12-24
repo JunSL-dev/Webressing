@@ -1,6 +1,6 @@
 html,body{
 	overflow-x:hidden;
-	background:azure;
+	background:floralwhite;
 }
 
 ::-webkit-scrollbar{
@@ -18,7 +18,7 @@ p{
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    left: -140%;
+    left: -40% !important;
     z-index: 1000;
     display: none;
     float: left;
@@ -33,6 +33,10 @@ p{
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
+}
+
+.dropdown-item{
+	cursor:pointer;
 }
 
 #personal{
@@ -273,6 +277,7 @@ article .container{
 
 .sale_list{
 	display:inline-block;
+	transition:.1s;
 	
 	position:relative;
 }
@@ -450,6 +455,12 @@ article .container{
 	background:rgba(0,0,0,0.7);	
 	
 	transition:.5s;
+}
+
+.sale_list:hover{
+	transform:scale(1.05);
+	
+	z-index:999;
 }
 
 .sale_list:hover:after{

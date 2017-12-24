@@ -22,9 +22,8 @@ public class DashboardAction implements IAction{
 			req.setCharacterEncoding("utf-8");
 			res.setContentType("application/json;charset=utf-8");
 			int id = Integer.parseInt(req.getParameter("id"));
-			
-			HttpSession session = req.getSession();
-			session.setAttribute("id", id);
+		
+			req.getServletContext().setAttribute("id", id);
 			
 			System.out.println("Something good");
 			

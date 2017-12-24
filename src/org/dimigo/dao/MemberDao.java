@@ -223,7 +223,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT mli.profile_image, mli.nickname, mhi.earn, mpi.profile_content FROM "
+		String sql = "SELECT mli.profile_image, mli.nickname, mhi.earn, mpi.profile_content, mli.member_id FROM "
 				+ "member_light_info As mli JOIN member_heavy_info AS mhi ON mli.member_id = mhi.member_id"
 				+ " JOIN member_profile_info AS mpi ON mhi.member_id = mpi.member_id ORDER BY convert(mhi.earn,decimal) desc";
 		try {
@@ -240,6 +240,7 @@ public class MemberDao {
 				result.setNickname(rs.getString(2));
 				result.setEarn(rs.getString(3));
 				result.setProfile_content(rs.getString(4));
+				result.setId(rs.getInt(5));
 				
 				list.add(result);
 			}
@@ -248,6 +249,56 @@ public class MemberDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception("사용자 목록 조회 시 오류가 발생했습니다.");
+		} finally {
+			if (rs != null) rs.close();
+			if (pstmt != null) pstmt.close();
+		}
+	}
+	
+	public MemberVO profileTab(MemberVO member) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT mi.name, mi.user_id, mi.password, mi.is_seller, "
+				+ "mli.profile_image, mli.nickname, mli.gender, mli.phone, mli.email, "
+				+ "mhi.account, mhi.earn, mpi.profile_content "
+				+ "FROM member AS mi JOIN member_light_info AS mli ON mi.id = mli.member_id "
+				+ "JOIN member_heavy_info AS mhi ON mli.member_id = mhi.member_id "
+				+ "JOIN member_profile_info AS mpi ON mhi.member_id = mpi.member_id "
+				+ "WHERE mi.id = ?";
+		
+		try {
+			 pstmt = conn.prepareStatement(sql);
+			 
+			 pstmt.setInt(1, member.getId());
+			 
+			 rs = pstmt.executeQuery();
+			 
+			 MemberVO result = null;
+			 while(rs.next()) {
+				 result = new MemberVO();
+				 
+				 result.setName(rs.getString(1));
+				 result.setUserId(rs.getString(2));
+				 result.setPassword(rs.getString(3));
+				 result.setSeller(rs.getBoolean(4));
+				 
+				 result.setProfileImage(rs.getString(5));
+				 result.setNickname(rs.getString(6));
+				 result.setGender(rs.getString(7));
+				 result.setPhone(rs.getInt(8));
+				 result.setEmail(rs.getString(9));
+				 
+				 result.setAccount(rs.getString(10));
+				 result.setEarn(rs.getString(11));
+				 
+				 result.setProfile_content(rs.getString(12));
+			 }
+			 
+			 return result;
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception("오롤오ㅗㄹ오로롤류!");
 		} finally {
 			if (rs != null) rs.close();
 			if (pstmt != null) pstmt.close();

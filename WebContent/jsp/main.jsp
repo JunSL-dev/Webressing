@@ -59,7 +59,7 @@
 							<div class="dish">
 								<img class="card-img-top profile-img" src="${ contextPath }/upload/${ data.profileImage }" alt="Card image cap">
 						  		<button onclick="view_profile(this)" type="button" class="btn btn-dark view-pro vivify popIn">프로필 보기</button>
-						  		<input type="hidden" value="${ status.count }" name="for_view">
+						  		<input type="hidden" value="${ data.id }" name="for_view">
 							</div>
 						  <div class="card-body">
 						  	<h4 class="card-title">${ status.count}. ${ data.nickname }</h4>

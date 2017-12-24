@@ -20,5 +20,14 @@ public class DashboardVO {
 	}
 
 	private String content;
+	private boolean seller;
+	
+	public void setSeller(boolean seller) {
+		this.seller = seller;
+	}
+	
+	public boolean getSeller() {
+		return this.seller;
+	}
 	
 }

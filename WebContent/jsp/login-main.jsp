@@ -7,22 +7,12 @@
 <title>Insert title here</title>
 </head>
 	<body>
-	<%-- <c:if test="${ empty user }">
-		<c:if test="${ empty view }">
-			<% 
-				RequestDispatcher rd = request.getRequestDispatcher("/main.run");
-				rd.forward(request,response);
-			%>
+		<c:if test="${ empty user }">
+		<%
+			RequestDispatcher rd = request.getRequestDispatcher("/main.run");
+			rd.forward(request,response);
+		%>
 		</c:if>
-	</c:if>
-	<c:if test="${ !empty user }">
-		<c:if test="${ !empty view }">
-				<%
-					session.setAttribute("visitor", session.getAttribute("user"));
-					session.removeAttribute("user");
-				%>
-		</c:if>	
-	</c:if> --%>
 		<nav class="navbar navbar-dark bg-dark justify-content-between">
 			 <a class="navbar-brand" href="${ contextPath }/main.run">
 			   <img src="${ contextPath }/img/logo.png" width="30" height="30" alt="Logo">
@@ -33,13 +23,14 @@
 			 <li class="nav-item dropdown" id="personal">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         				${ user.nickname }
+        				<input id="id" class="id" type="text" value="${ user.id }" hidden>
 		        </a>
 		        
 		        <div class="dropdown-menu vivify popIn" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item toDashboard" >프로필 수정</a>
+		          <a class="dropdown-item modify-profile" >프로필 수정</a>
+		          <a class="dropdown-item UI" >내가 구매한 UI</a>
+		          <a class="dropdown-item beSeller" >판매 시작하기</a>
 		          <a class="dropdown-item toDashboard" >나만의 UI 만들기</a>
-		          <a class="dropdown-item toDashboard" >내가 구매한 UI</a>
-		          <a class="dropdown-item toDashboard" >판매 시작하기</a>
 		          <a class="dropdown-item" href="${ contextPath }/logout.run">로그아웃</a>
 		        </div>
 	     	 </li>

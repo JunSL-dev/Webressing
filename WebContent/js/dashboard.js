@@ -208,13 +208,14 @@ $(document).ready(function(){
 	// 창닫기!!
 	$('.close').on('click',function(){
 		var id = $('#id').val();
+		var whichFunc = "beSeller";
 		$.ajax({
 			type:'post',
-			url:'/WebClass/redirect.run',
-			data:{'id':id},
+			url:contextPath+'/profile.run',
+			data:{'id':id,'whichFunc':whichFunc},
 			success:function(data){
 				if(data.success){
-					location.replace('/WebClass/jsp/login-main.jsp');
+					location.replace(contextPath+'/jsp/profile.jsp');
 				} else{
 					alert("실패함ㅜ");
 				}

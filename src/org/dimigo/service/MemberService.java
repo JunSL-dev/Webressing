@@ -24,6 +24,21 @@ public class MemberService extends AbstractService{
 		}
 	}
 	
+	public MemberVO profileTab(MemberVO member) throws Exception{
+		Connection conn = null;
+
+		try {
+			conn = getConnection();
+
+			MemberDao dao = new MemberDao(conn);
+
+			return dao.profileTab(member);
+
+		} finally {
+			if(conn != null) conn.close();
+		}
+	}
+	
 	public void signUp(MemberVO member) throws Exception{
 		System.out.println("여기는 memberService!");
 		

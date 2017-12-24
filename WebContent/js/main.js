@@ -38,7 +38,7 @@ $(document).ready(function(){
 					$('#userId').css('border','1px solid red');
 					$('#password').css('border','1px solid red');
 				} else if(data.success){
-					location.replace("/WebClass/jsp/login-main.jsp");
+					location.replace(contextPath+"/jsp/login-main.jsp");
 				}
 			}
 		});
@@ -56,7 +56,7 @@ function view_profile(me){
 		data:{'id':id,'view':'true'},
 		success:function(data){
 			if(data.success){
-				location.replace('/WebClass/jsp/login-main.jsp');
+				location.replace(contextPath+'/jsp/profile.jsp');
 			} else{
 				alert("실패함ㅜ");
 			}

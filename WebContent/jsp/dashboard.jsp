@@ -37,7 +37,7 @@
 				<ul>
 					<li id="move" class="tool"><i class="fa fa-arrows" aria-hidden="true"></i></li>
 					<li id="mkfigure" class="tool"><i class="fa fa-square-o" aria-hidden="true"></i></li>
-					<!-- <li class="tool"><i class="fa fa-snowflake-o" aria-hidden="true"></i></li> -->
+					<li class="tool"><i class="fa fa-snowflake-o" aria-hidden="true"></i></li>
 					<li id="mktext" class="tool"><i class="fa fa-font" aria-hidden="true"></i></li>
 				</ul>
 			</div>
